@@ -36,6 +36,12 @@ const Hero = () => {
               View Sale
             </Link>
           </div>
+          
+          <div className="mt-6 inline-block">
+            <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1.5 rounded-full">
+              Powered by TanStack Query for optimized data fetching
+            </span>
+          </div>
         </div>
       </div>
     </section>
