@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import ProductList from '../components/Products/ProductList'
+import ProductListInfinite from '../components/Products/ProductListInfinite'
 import FilterSidebar from '../components/Products/FilterSidebar'
 
 const ProductsPage = () => {
@@ -80,9 +80,9 @@ const ProductsPage = () => {
           </div>
         </div>
 
-        {/* Product grid */}
+        {/* Product grid with infinite scroll */}
         <div className="flex-1">
-          <ProductList />
+          <ProductListInfinite />
         </div>
       </div>
     </div>

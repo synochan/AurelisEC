@@ -17,7 +17,16 @@ export const QUERY_KEYS = {
 export const useProducts = (params?: URLSearchParams) => {
   return useQuery(
     [QUERY_KEYS.PRODUCTS, params?.toString()],
-    () => apiService.fetchProducts(params)
+    () => apiService.fetchProducts(params),
+    {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      cacheTime: 1000 * 60 * 30, // 30 minutes
+      refetchOnWindowFocus: false,
+      retry: 2,
+      onError: (error) => {
+        console.error('Error fetching products:', error);
+      }
+    }
   )
 }
 
@@ -27,6 +36,13 @@ export const useProduct = (slug: string) => {
     () => apiService.fetchProductBySlug(slug),
     {
       enabled: !!slug,
+      staleTime: 1000 * 60 * 10, // 10 minutes
+      cacheTime: 1000 * 60 * 60, // 60 minutes - product details rarely change
+      refetchOnWindowFocus: false,
+      retry: 2,
+      onError: (error) => {
+        console.error(`Error fetching product ${slug}:`, error);
+      }
     }
   )
 }
@@ -34,7 +50,18 @@ export const useProduct = (slug: string) => {
 export const useFeaturedProducts = () => {
   return useQuery(
     [QUERY_KEYS.FEATURED_PRODUCTS],
-    () => apiService.fetchFeaturedProducts()
+    () => apiService.fetchFeaturedProducts(),
+    {
+      staleTime: 1000 * 60 * 15, // 15 minutes
+      cacheTime: 1000 * 60 * 60, // 60 minutes
+      refetchOnWindowFocus: false,
+      retry: 2,
+      // Featured products are important for the home page so let's keep them fresh
+      refetchOnMount: true,
+      onError: (error) => {
+        console.error('Error fetching featured products:', error);
+      }
+    }
   )
 }
 
@@ -118,9 +145,23 @@ export const useCreateOrder = () => {
   return useMutation(
     (orderData: any) => apiService.createOrder(orderData),
     {
-      onSuccess: () => {
+      // On success, we invalidate the orders query and show the updated list
+      onSuccess: (data) => {
+        // Invalidate orders list
         queryClient.invalidateQueries([QUERY_KEYS.ORDERS])
+        
+        // Update the cache with the newly created order
+        queryClient.setQueryData([QUERY_KEYS.ORDER, data.id], data)
+        
+        // Return the data for easier access by the component
+        return data
       },
+      // Add error handling
+      onError: (error) => {
+        console.error('Error creating order:', error)
+      },
+      // Retry up to 2 times on failure
+      retry: 2,
     }
   )
 }
