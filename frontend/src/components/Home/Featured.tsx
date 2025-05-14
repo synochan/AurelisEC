@@ -24,7 +24,7 @@ const Featured = () => {
         <h2 className="text-3xl font-bold">Featured Products</h2>
         <p className="mt-2 text-gray-600">Check out our latest additions to the collection</p>
         <div className="mt-2">
-          <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+          <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-gray-300">
             Using TanStack Query for optimized data fetching and caching
           </span>
         </div>
@@ -45,7 +45,7 @@ const Featured = () => {
           <div className="text-center mt-10">
             <Link
               to="/products"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800"
             >
               View All Products
               <i className="fas fa-arrow-right ml-2"></i>

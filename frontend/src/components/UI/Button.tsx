@@ -24,10 +24,10 @@ const Button: React.FC<ButtonProps> = ({
   
   // Variant classes
   const variantClasses = {
-    primary: 'bg-indigo-600 hover:bg-indigo-700 text-white',
-    secondary: 'bg-white hover:bg-gray-100 text-gray-800 border border-gray-300',
-    danger: 'bg-red-600 hover:bg-red-700 text-white',
-    outline: 'bg-transparent border border-indigo-600 text-indigo-600 hover:bg-indigo-50'
+    primary: 'bg-black hover:bg-gray-800 text-white',
+    secondary: 'bg-white hover:bg-gray-100 text-black border border-gray-300',
+    danger: 'bg-black hover:bg-gray-800 text-white border border-gray-700',
+    outline: 'bg-transparent border border-black text-black hover:bg-gray-100'
   }
   
   // Size classes

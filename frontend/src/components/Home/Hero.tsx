@@ -25,20 +25,20 @@ const Hero = () => {
           <div className="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <Link
               to="/products"
-              className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-gray-100 md:text-lg"
+              className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-white hover:bg-gray-100 md:text-lg"
             >
               Shop Now
             </Link>
             <Link
               to="/products?category=sale"
-              className="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-indigo-700 md:text-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-black md:text-lg transition-colors duration-200"
             >
               View Sale
             </Link>
           </div>
           
           <div className="mt-6 inline-block">
-            <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1.5 rounded-full">
+            <span className="bg-white text-black text-xs font-medium px-3 py-1.5 rounded-full">
               Powered by TanStack Query for optimized data fetching
             </span>
           </div>
