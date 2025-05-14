@@ -1,6 +1,6 @@
 import { createContext, useState, useContext, useEffect, useCallback } from 'react'
-import { getUserProfile, refreshToken } from '../utils/api'
-import { getToken, setToken, removeToken, isTokenExpired } from '../utils/auth'
+import { getUserProfile } from '../utils/api'
+import { getToken, setToken, removeToken, isTokenExpired, refreshToken } from '../utils/auth'
 import { User } from '../types'
 
 interface AuthContextType {

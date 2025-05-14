@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { Product } from '../../types'
-import { fetchProductBySlug } from '../../utils/api'
+import { useProduct } from '../../hooks/useQueries'
 import Loader from '../UI/Loader'
 import { useCart } from '../../context/CartContext'
 import Alert from '../UI/Alert'
 
 const ProductDetail = () => {
-  const { slug } = useParams<{ slug: string }>()
+  const { slug = '' } = useParams<{ slug: string }>()
   const navigate = useNavigate()
   const { addToCart } = useCart()
   
-  const [product, setProduct] = useState<Product | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { data: product, isLoading, error: queryError } = useProduct(slug)
+  
   const [selectedColor, setSelectedColor] = useState<string>('')
   const [selectedSize, setSelectedSize] = useState<string>('')
   const [quantity, setQuantity] = useState<number>(1)
@@ -22,40 +20,24 @@ const ProductDetail = () => {
   const [alertType, setAlertType] = useState<'success' | 'error'>('success')
   const [showAlert, setShowAlert] = useState(false)
 
+  // Set initial values when product data loads
   useEffect(() => {
-    const loadProduct = async () => {
-      if (!slug) return
-
-      try {
-        setLoading(true)
-        const data = await fetchProductBySlug(slug)
-        setProduct(data)
-        
-        // Set default color and size from first variant
-        if (data.variants && data.variants.length > 0) {
-          setSelectedColor(data.variants[0].color)
-          setSelectedSize(data.variants[0].size)
-        }
-        
-        // Set main image from featured image or first image
-        if (data.images && data.images.length > 0) {
-          const featuredImage = data.images.find(img => img.is_featured)
-          setMainImage(featuredImage ? featuredImage.image : data.images[0].image)
-        } else if (data.image) {
-          setMainImage(data.image)
-        }
-        
-        setError(null)
-      } catch (err) {
-        setError('Failed to load product details')
-        console.error(err)
-      } finally {
-        setLoading(false)
+    if (product) {
+      // Set default color and size from first variant
+      if (product.variants && product.variants.length > 0) {
+        setSelectedColor(product.variants[0].color)
+        setSelectedSize(product.variants[0].size)
+      }
+      
+      // Set main image from featured image or first image
+      if (product.images && product.images.length > 0) {
+        const featuredImage = product.images.find(img => img.is_featured)
+        setMainImage(featuredImage ? featuredImage.image : product.images[0].image)
+      } else if (product.image) {
+        setMainImage(product.image)
       }
     }
-
-    loadProduct()
-  }, [slug])
+  }, [product])
 
   const handleAddToCart = () => {
     if (!product) return
@@ -115,12 +97,12 @@ const ProductDetail = () => {
     setMainImage(image)
   }
 
-  if (loading) return <Loader />
+  if (isLoading) return <Loader />
 
-  if (error || !product) {
+  if (queryError || !product) {
     return (
       <div className="text-center py-10">
-        <p className="text-red-500">{error || 'Product not found'}</p>
+        <p className="text-red-500">Failed to load product details</p>
       </div>
     )
   }
