@@ -10,17 +10,30 @@ export default {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       colors: {
+        primary: {
+          DEFAULT: '#000000',
+          hover: '#333333',
+        },
+        secondary: {
+          DEFAULT: '#ffffff',
+          hover: '#f0f0f0',
+        },
+        accent: {
+          DEFAULT: '#888888',
+          light: '#cccccc',
+          dark: '#444444',
+        },
         indigo: {
           50: '#eef2ff',
           100: '#e0e7ff',
           200: '#c7d2fe',
           300: '#a5b4fc',
           400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          500: '#000000', // Changed to black
+          600: '#333333', // Changed to dark gray
+          700: '#444444', // Changed to medium dark gray
+          800: '#666666', // Changed to medium gray
+          900: '#888888', // Changed to light gray
         },
       },
       spacing: {

@@ -4,7 +4,9 @@ import { Product, Category, User, Order } from '../types'
 
 // Create axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000/api' 
+    : `${window.location.protocol}//${window.location.hostname}:8000/api`
 })
 
 // Add request interceptor to add auth token
