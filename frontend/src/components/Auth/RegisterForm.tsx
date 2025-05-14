@@ -72,8 +72,8 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10">
-      <h2 className="text-center text-2xl font-bold text-gray-900 mb-6">Create a new account</h2>
+    <div className="bg-white dark:bg-gray-900 py-10 px-8 shadow-lg rounded-lg max-w-md mx-auto">
+      <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-white mb-8">Create your account</h2>
       
       {error && (
         <Alert
@@ -91,41 +91,41 @@ const RegisterForm = () => {
         />
       )}
       
-      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+      <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
           <div>
-            <label htmlFor="first_name" className="form-label">
+            <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               First name
             </label>
             <input
               id="first_name"
               type="text"
               {...register('first_name', { required: 'First name is required' })}
-              className={`form-input ${errors.first_name ? 'border-red-500' : ''}`}
+              className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.first_name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
             />
             {errors.first_name && (
-              <p className="mt-1 text-red-500 text-sm">{errors.first_name.message}</p>
+              <p className="mt-2 text-red-600 text-sm">{errors.first_name.message}</p>
             )}
           </div>
 
           <div>
-            <label htmlFor="last_name" className="form-label">
+            <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Last name
             </label>
             <input
               id="last_name"
               type="text"
               {...register('last_name', { required: 'Last name is required' })}
-              className={`form-input ${errors.last_name ? 'border-red-500' : ''}`}
+              className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.last_name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
             />
             {errors.last_name && (
-              <p className="mt-1 text-red-500 text-sm">{errors.last_name.message}</p>
+              <p className="mt-2 text-red-600 text-sm">{errors.last_name.message}</p>
             )}
           </div>
         </div>
 
         <div>
-          <label htmlFor="username" className="form-label">
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Username
           </label>
           <input
@@ -138,15 +138,15 @@ const RegisterForm = () => {
                 message: 'Username must be at least 3 characters'
               }
             })}
-            className={`form-input ${errors.username ? 'border-red-500' : ''}`}
+            className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.username ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
           />
           {errors.username && (
-            <p className="mt-1 text-red-500 text-sm">{errors.username.message}</p>
+            <p className="mt-2 text-red-600 text-sm">{errors.username.message}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Email
           </label>
           <input
@@ -159,15 +159,15 @@ const RegisterForm = () => {
                 message: 'Invalid email address'
               }
             })}
-            className={`form-input ${errors.email ? 'border-red-500' : ''}`}
+            className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
           />
           {errors.email && (
-            <p className="mt-1 text-red-500 text-sm">{errors.email.message}</p>
+            <p className="mt-2 text-red-600 text-sm">{errors.email.message}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="password" className="form-label">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Password
           </label>
           <input
@@ -180,15 +180,15 @@ const RegisterForm = () => {
                 message: 'Password must be at least 8 characters'
               }
             })}
-            className={`form-input ${errors.password ? 'border-red-500' : ''}`}
+            className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.password ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
           />
           {errors.password && (
-            <p className="mt-1 text-red-500 text-sm">{errors.password.message}</p>
+            <p className="mt-2 text-red-600 text-sm">{errors.password.message}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="password2" className="form-label">
+          <label htmlFor="password2" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Confirm Password
           </label>
           <input
@@ -198,10 +198,10 @@ const RegisterForm = () => {
               required: 'Please confirm your password',
               validate: value => value === password || 'Passwords do not match'
             })}
-            className={`form-input ${errors.password2 ? 'border-red-500' : ''}`}
+            className={`block w-full rounded-md px-4 py-3 text-gray-900 border ${errors.password2 ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:border-black focus:ring-black dark:bg-gray-800 dark:text-white`}
           />
           {errors.password2 && (
-            <p className="mt-1 text-red-500 text-sm">{errors.password2.message}</p>
+            <p className="mt-2 text-red-600 text-sm">{errors.password2.message}</p>
           )}
         </div>
 
@@ -209,36 +209,39 @@ const RegisterForm = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none ${
+            className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black ${
               loading ? 'opacity-75 cursor-not-allowed' : ''
             }`}
           >
             {loading ? (
               <>
-                <i className="fas fa-spinner fa-spin mr-2"></i>
-                Registering...
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Creating account...
               </>
             ) : (
-              'Register'
+              'Create account'
             )}
           </button>
         </div>
       </form>
 
-      <div className="mt-6">
+      <div className="mt-8">
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300" />
+            <div className="w-full border-t border-gray-300 dark:border-gray-700" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Already have an account?</span>
+            <span className="px-2 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">Already have an account?</span>
           </div>
         </div>
 
         <div className="mt-6">
           <Link
             to="/login"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white border-indigo-600 hover:bg-indigo-50"
+            className="w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm text-base font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
           >
             Sign in instead
           </Link>
