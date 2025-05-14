@@ -21,25 +21,25 @@ const Header = () => {
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0)
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="bg-black shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="text-2xl font-bold text-indigo-600">
+              <Link to="/" className="text-2xl font-bold text-white">
                 FashionTrend
               </Link>
             </div>
             <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
                 to="/"
-                className="border-transparent text-gray-500 hover:border-indigo-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-300 hover:border-white hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="border-transparent text-gray-500 hover:border-indigo-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                className="border-transparent text-gray-300 hover:border-white hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
               >
                 Products
               </Link>
@@ -48,12 +48,12 @@ const Header = () => {
           <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-4">
             <Link
               to="/cart"
-              className="relative p-1 rounded-full text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="relative p-1 rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
             >
               <span className="sr-only">View cart</span>
               <i className="fas fa-shopping-cart text-xl"></i>
               {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-white text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemCount}
                 </span>
               )}
@@ -62,7 +62,7 @@ const Header = () => {
               <div className="relative">
                 <button
                   onClick={toggleMenu}
-                  className="flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900"
+                  className="flex items-center space-x-2 text-sm font-medium text-gray-300 hover:text-white"
                 >
                   <span>{user?.first_name || 'User'}</span>
                   <i className={`fas fa-chevron-down transition-transform ${isMenuOpen ? 'rotate-180' : ''}`}></i>
@@ -72,7 +72,7 @@ const Header = () => {
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                       <Link
                         to="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
                         role="menuitem"
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -80,7 +80,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="/orders"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
                         role="menuitem"
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -88,7 +88,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="/settings"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm text-black hover:bg-gray-100"
                         role="menuitem"
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -99,7 +99,7 @@ const Header = () => {
                           setIsMenuOpen(false)
                           handleLogout()
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block w-full text-left px-4 py-2 text-sm text-black hover:bg-gray-100"
                         role="menuitem"
                       >
                         Sign out
@@ -112,13 +112,13 @@ const Header = () => {
               <div className="flex space-x-2">
                 <Link
                   to="/login"
-                  className="text-gray-500 hover:text-gray-900 font-medium"
+                  className="text-gray-300 hover:text-white font-medium"
                 >
                   Sign in
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700"
+                  className="bg-white text-black px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100"
                 >
                   Sign up
                 </Link>
@@ -128,12 +128,12 @@ const Header = () => {
           <div className="flex items-center sm:hidden">
             <Link
               to="/cart"
-              className="relative p-1 mr-4 rounded-full text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="relative p-1 mr-4 rounded-full text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
             >
               <span className="sr-only">View cart</span>
               <i className="fas fa-shopping-cart text-xl"></i>
               {cartItemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-white text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemCount}
                 </span>
               )}
@@ -141,7 +141,7 @@ const Header = () => {
             <button
               onClick={toggleMenu}
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -152,24 +152,24 @@ const Header = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <div className="sm:hidden" id="mobile-menu">
+        <div className="sm:hidden bg-black" id="mobile-menu">
           <div className="pt-2 pb-3 space-y-1">
             <Link
               to="/"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
+              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-300 hover:bg-gray-800 hover:border-white hover:text-white"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800"
+              className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-300 hover:bg-gray-800 hover:border-white hover:text-white"
               onClick={() => setIsMenuOpen(false)}
             >
               Products
             </Link>
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-gray-700">
             {isAuthenticated ? (
               <div>
                 <div className="flex items-center px-4">
@@ -181,38 +181,38 @@ const Header = () => {
                         alt={user.username}
                       />
                     ) : (
-                      <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                        <span className="text-indigo-800 font-medium text-sm">
+                      <div className="h-10 w-10 rounded-full bg-gray-800 flex items-center justify-center">
+                        <span className="text-white font-medium text-sm">
                           {user?.first_name?.charAt(0) || user?.username?.charAt(0) || 'U'}
                         </span>
                       </div>
                     )}
                   </div>
                   <div className="ml-3">
-                    <div className="text-base font-medium text-gray-800">
+                    <div className="text-base font-medium text-white">
                       {user?.first_name} {user?.last_name}
                     </div>
-                    <div className="text-sm font-medium text-gray-500">{user?.email}</div>
+                    <div className="text-sm font-medium text-gray-400">{user?.email}</div>
                   </div>
                 </div>
                 <div className="mt-3 space-y-1">
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Profile
                   </Link>
                   <Link
                     to="/orders"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Orders
                   </Link>
                   <Link
                     to="/settings"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="block px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Settings
@@ -222,7 +222,7 @@ const Header = () => {
                       setIsMenuOpen(false)
                       handleLogout()
                     }}
-                    className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                    className="block w-full text-left px-4 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
                   >
                     Sign out
                   </button>
@@ -232,14 +232,14 @@ const Header = () => {
               <div className="space-y-1 px-4">
                 <Link
                   to="/login"
-                  className="block text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 px-4 py-2"
+                  className="block text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800 px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign in
                 </Link>
                 <Link
                   to="/register"
-                  className="block text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md"
+                  className="block text-base font-medium text-black bg-white hover:bg-gray-100 px-4 py-2 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Sign up

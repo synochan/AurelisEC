@@ -30,9 +30,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   }
 
   return (
-    <div className="card group transition-all duration-300 hover:shadow-lg">
+    <div className="card group transition-all duration-300 hover:shadow-lg border border-gray-200 bg-white">
       <Link to={`/products/${product.slug}`} className="block relative overflow-hidden">
-        <div className="aspect-w-1 aspect-h-1 h-64 w-full overflow-hidden bg-gray-200">
+        <div className="aspect-w-1 aspect-h-1 h-64 w-full overflow-hidden bg-gray-100">
           {product.featured_image ? (
             <img
               src={product.featured_image.image}
@@ -52,14 +52,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
           )}
           
           {!product.in_stock && (
-            <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+            <div className="absolute top-2 right-2 bg-black text-white text-xs font-bold px-2 py-1 rounded">
               Out of Stock
             </div>
           )}
         </div>
         
         <div className="p-4">
-          <h3 className="text-lg font-medium text-gray-900 mb-1">{product.name}</h3>
+          <h3 className="text-lg font-medium text-black mb-1">{product.name}</h3>
           <p className="text-gray-500 text-sm mb-2">{product.category?.name}</p>
           <div className="flex justify-between items-center">
             <p className="font-bold text-lg">${product.price.toFixed(2)}</p>
@@ -68,7 +68,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               disabled={!product.in_stock}
               className={`p-2 rounded-full ${
                 product.in_stock
-                  ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  ? 'bg-black text-white hover:bg-gray-800'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
